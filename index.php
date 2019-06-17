@@ -15,7 +15,7 @@ $row = $connectSql -> querySqlResult("test",$sql); //传入数据库名字和sql
         $code = 20000;
         $message = "信息请求成功";
         $data = array(
-                "name" => "你爸爸",
+                "name" => "你懂的",
                 "list"=>$row
             );
         

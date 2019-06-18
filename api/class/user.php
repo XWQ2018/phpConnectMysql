@@ -6,7 +6,7 @@ require "..\lib\\response.class.php";  //碰到转义字符需要转义
 //实例化类
 $response = new Response;
 
-$sql = "select * from user";
+$sql = "select * from user where id>3 limit 3";
 
 $result = $conn->query($sql);
 
@@ -18,7 +18,7 @@ if(mysqli_num_rows($result)<1){
     echo json_decode($resultInfo,320);
 }else{
 
-    // 得到所有结果
+    // 得到所有结果集
     $row=($result->fetch_all(MYSQLI_ASSOC));
 
     //返回数据
@@ -30,6 +30,11 @@ if(mysqli_num_rows($result)<1){
     ];
 
     echo $response->json($code,$message,$data);
+
+    $CIRRENTtIME = time();
+
+    echo '<hr>';
+    echo '时期时间---' . date("Y-m-d H:i:s",$CIRRENTtIME);
 
     // 释放结果集 
     $result->close();
